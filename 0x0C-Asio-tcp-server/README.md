@@ -130,9 +130,11 @@ Server listening on port 8080...
 Client connected!
 ```
 
-and then **exits**. `nc` also exits at once, with status `0`.
+and then the server **exits**.
 
-> `main.cpp` returns right after `accept()`. When `main()` ends, the `socket` object is destroyed and closes the connection, so the client sees the connection closed immediately. A second `nc` after that is refused (exit status `1`), because the server is gone. This server handles exactly one client.
+> `main.cpp` returns right after `accept()`. When `main()` ends, the `socket` object is destroyed and closes the connection. A second `nc` after that is refused (exit status `1`), because the server is gone. This server handles exactly one client.
+>
+> Do not expect `nc` to quit by itself. The OpenBSD `nc` used here keeps running while its stdin is open, even after the server closed the connection (the client side shows `CLOSE-WAIT` in `ss`). Press `Ctrl+C` or `Ctrl+D`. With `nc 127.0.0.1 8080 < /dev/null` it exits at once, because stdin is already at end-of-file.
 
 If you want the connection to stay open so you can inspect it with `ss -tn 'sport = :8080'`, add a pause before `return 0;`, for example `std::cin.get();` (this is a suggestion and is not part of the lab code).
 
@@ -285,7 +287,7 @@ Client connected!
 Message sent!
 ```
 
-After that the server exits and `nc` closes.
+After that the server exits and closes the connection. `nc` may keep running until you press `Ctrl+C`.
 
 ### `asio::write()`
 
