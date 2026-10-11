@@ -13,6 +13,8 @@ public:
 
     void start();
 
+    ~Connection();
+
 private:
     void read();
 
