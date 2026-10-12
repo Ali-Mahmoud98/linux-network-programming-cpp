@@ -2,9 +2,12 @@
 
 #include <iostream>
 
+#include "../debug/debug.h"
+
 Connection::Connection(asio::io_context& io)
     : m_socket(io)
 {
+    DEBUG_PRINT("Connection created, this= " << this);
 }
 
 asio::ip::tcp::socket& Connection::socket()
@@ -14,11 +17,13 @@ asio::ip::tcp::socket& Connection::socket()
 
 void Connection::start()
 {
+    DEBUG_PRINT("Connection starting, this= " << this);
     read();
 }
 
 void Connection::read()
 {
+    DEBUG_PRINT("Connection->read method started, this= " << this);
     m_socket.async_read_some(
         asio::buffer(m_buffer),
         [this](const asio::error_code& error,
@@ -39,10 +44,12 @@ void Connection::read()
             write(bytes_read);
         }
     );
+    DEBUG_PRINT("Connection->read method ended, this= " << this);
 }
 
 void Connection::write(std::size_t bytes_read)
 {
+    DEBUG_PRINT("Connection->write method started, this= " << this);
     asio::async_write(
         m_socket,
         asio::buffer(m_buffer.data(), bytes_read),
@@ -64,4 +71,5 @@ void Connection::write(std::size_t bytes_read)
             read();
         }
     );
+    DEBUG_PRINT("Connection->write method ended, this= " << this);
 }

@@ -16,3 +16,9 @@ PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/connection
     ${CMAKE_CURRENT_SOURCE_DIR}/server
 )
+
+option(DEBUG_TRACE "Enable debug tracing" OFF)
+
+if(DEBUG_TRACE)
+    target_compile_definitions(asio-tcp-server PRIVATE DEBUG_TRACE)
+endif()
