@@ -1,0 +1,184 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1050 920" width="100%" height="100%" style="background-color: #0f172a; font-family: &#39;Segoe UI&#39;, system-ui, -apple-system, sans-serif;">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#64748b" />
+    </marker>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.35" />
+    </filter>
+  </defs>
+
+  <rect width="1050" height="920" fill="url(#bgGrad)" />
+
+  <!-- Title -->
+  <text x="525" y="42" text-anchor="middle" fill="#f8fafc" font-size="22" font-weight="bold">رحلة تغليف البيانات عبر الطبقات — OSI / TCP-IP Encapsulation</text>
+  <text x="525" y="68" text-anchor="middle" fill="#94a3b8" font-size="14">كيف تتحول رسالة "Hello" (5 Bytes) من Application Data إلى إشارات على السلك</text>
+
+  <!-- ==================== LAYER 7: APPLICATION ==================== -->
+  <g transform="translate(30, 95)">
+    <rect x="0" y="0" width="220" height="34" rx="6" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5" />
+    <text x="110" y="22" text-anchor="middle" fill="#38bdf8" font-size="14" font-weight="bold">Layer 7: Application</text>
+
+    <!-- Payload Box -->
+    <g transform="translate(550, 10)" filter="url(#shadow)">
+      <rect x="0" y="0" width="170" height="65" rx="6" fill="#0284c7" stroke="#7dd3fc" stroke-width="1.5" />
+      <text x="85" y="26" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="bold">"Hello"</text>
+      <text x="85" y="48" text-anchor="middle" fill="#e0f2fe" font-size="13" font-family="monospace">48 65 6c 6c 6f</text>
+    </g>
+
+    <!-- PDU Label -->
+    <rect x="740" y="22" width="240" height="40" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="860" y="47" text-anchor="middle" fill="#f8fafc" font-size="14" font-weight="bold">(5 Bytes)  ➔  <tspan fill="#38bdf8">Data / Payload</tspan></text>
+  </g>
+
+  <!-- Arrow L7 -> L4 -->
+  <line x1="665" y1="175" x2="665" y2="220" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)" />
+
+  <!-- ==================== LAYER 4: TRANSPORT (TCP) ==================== -->
+  <g transform="translate(30, 230)">
+    <rect x="0" y="0" width="220" height="34" rx="6" fill="#1e293b" stroke="#a855f7" stroke-width="1.5" />
+    <text x="110" y="22" text-anchor="middle" fill="#c084fc" font-size="14" font-weight="bold">Layer 4: Transport (TCP)</text>
+
+    <!-- TCP Header -->
+    <g transform="translate(370, 10)" filter="url(#shadow)">
+      <rect x="0" y="0" width="180" height="65" rx="6" fill="#7e22ce" stroke="#d8b4fe" stroke-width="1.5" />
+      <text x="90" y="26" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="bold">TCP Header</text>
+      <text x="90" y="48" text-anchor="middle" fill="#f3e8ff" font-size="13">(20 Bytes)</text>
+      <rect x="0" y="70" width="180" height="44" rx="4" fill="#2e1065" stroke="#7e22ce" stroke-width="1" />
+      <text x="90" y="88" text-anchor="middle" fill="#e9d5ff" font-size="12" font-family="monospace">Src/Dst Port</text>
+      <text x="90" y="105" text-anchor="middle" fill="#e9d5ff" font-size="12" font-family="monospace">Seq/Ack, Flags</text>
+    </g>
+
+    <!-- Payload Box -->
+    <g transform="translate(550, 10)" filter="url(#shadow)">
+      <rect x="0" y="0" width="170" height="65" rx="6" fill="#0284c7" stroke="#7dd3fc" stroke-width="1.5" />
+      <text x="85" y="26" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="bold">"Hello"</text>
+      <text x="85" y="48" text-anchor="middle" fill="#e0f2fe" font-size="13">(5 Bytes)</text>
+    </g>
+
+    <!-- PDU Label -->
+    <rect x="740" y="22" width="240" height="40" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="860" y="47" text-anchor="middle" fill="#f8fafc" font-size="14" font-weight="bold">(25 Bytes)  ➔  <tspan fill="#c084fc">Segment</tspan></text>
+  </g>
+
+  <!-- Arrow L4 -> L3 -->
+  <line x1="575" y1="358" x2="575" y2="400" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)" />
+
+  <!-- ==================== LAYER 3: NETWORK (IPv4) ==================== -->
+  <g transform="translate(30, 410)">
+    <rect x="0" y="0" width="220" height="34" rx="6" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5" />
+    <text x="110" y="22" text-anchor="middle" fill="#fbbf24" font-size="14" font-weight="bold">Layer 3: Network (IPv4)</text>
+
+    <!-- IPv4 Header -->
+    <g transform="translate(190, 50)" filter="url(#shadow)">
+      <rect x="0" y="0" width="180" height="65" rx="6" fill="#d97706" stroke="#fde68a" stroke-width="1.5" />
+      <text x="90" y="26" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="bold">IPv4 Header</text>
+      <text x="90" y="48" text-anchor="middle" fill="#fef3c7" font-size="13">(20 Bytes)</text>
+      <rect x="0" y="70" width="180" height="44" rx="4" fill="#451a03" stroke="#d97706" stroke-width="1" />
+      <text x="90" y="88" text-anchor="middle" fill="#fde68a" font-size="12" font-family="monospace">Src/Dst IP, TTL</text>
+      <text x="90" y="105" text-anchor="middle" fill="#fde68a" font-size="12" font-family="monospace">Proto = 6 (TCP)</text>
+    </g>
+
+    <!-- TCP Header -->
+    <g transform="translate(370, 50)" filter="url(#shadow)">
+      <rect x="0" y="0" width="180" height="65" rx="6" fill="#7e22ce" stroke="#d8b4fe" stroke-width="1.5" />
+      <text x="90" y="26" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="bold">TCP Header</text>
+      <text x="90" y="48" text-anchor="middle" fill="#f3e8ff" font-size="13">(20 Bytes)</text>
+    </g>
+
+    <!-- Payload Box -->
+    <g transform="translate(550, 50)" filter="url(#shadow)">
+      <rect x="0" y="0" width="170" height="65" rx="6" fill="#0284c7" stroke="#7dd3fc" stroke-width="1.5" />
+      <text x="85" y="26" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="bold">"Hello"</text>
+      <text x="85" y="48" text-anchor="middle" fill="#e0f2fe" font-size="13">(5 Bytes)</text>
+    </g>
+
+    <!-- PDU Label -->
+    <rect x="740" y="62" width="240" height="40" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="860" y="87" text-anchor="middle" fill="#f8fafc" font-size="14" font-weight="bold">(45 Bytes)  ➔  <tspan fill="#fbbf24">Packet</tspan></text>
+  </g>
+
+  <!-- Arrow L3 -> L2 -->
+  <line x1="485" y1="580" x2="485" y2="615" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)" />
+
+  <!-- ==================== LAYER 2: DATA LINK (ETHERNET) ==================== -->
+  <g transform="translate(30, 620)">
+    <rect x="0" y="0" width="235" height="34" rx="6" fill="#1e293b" stroke="#10b981" stroke-width="1.5" />
+    <text x="117" y="22" text-anchor="middle" fill="#34d399" font-size="14" font-weight="bold">Layer 2: Data Link (Ethernet)</text>
+
+    <!-- Ethernet Header -->
+    <g transform="translate(10, 48)" filter="url(#shadow)">
+      <rect x="0" y="0" width="180" height="65" rx="6" fill="#059669" stroke="#a7f3d0" stroke-width="1.5" />
+      <text x="90" y="26" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="bold">Ethernet Header</text>
+      <text x="90" y="48" text-anchor="middle" fill="#d1fae5" font-size="13">(14 Bytes)</text>
+      <rect x="0" y="70" width="180" height="44" rx="4" fill="#022c22" stroke="#059669" stroke-width="1" />
+      <text x="90" y="88" text-anchor="middle" fill="#a7f3d0" font-size="12" font-family="monospace">Dst/Src MAC</text>
+      <text x="90" y="105" text-anchor="middle" fill="#a7f3d0" font-size="12" font-family="monospace">Type: 0x0800</text>
+    </g>
+
+    <!-- IPv4 Header -->
+    <g transform="translate(190, 48)" filter="url(#shadow)">
+      <rect x="0" y="0" width="180" height="65" rx="6" fill="#d97706" stroke="#fde68a" stroke-width="1.5" />
+      <text x="90" y="26" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="bold">IPv4 Header</text>
+      <text x="90" y="48" text-anchor="middle" fill="#fef3c7" font-size="13">(20 Bytes)</text>
+    </g>
+
+    <!-- TCP Header -->
+    <g transform="translate(370, 48)" filter="url(#shadow)">
+      <rect x="0" y="0" width="180" height="65" rx="6" fill="#7e22ce" stroke="#d8b4fe" stroke-width="1.5" />
+      <text x="90" y="26" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="bold">TCP Header</text>
+      <text x="90" y="48" text-anchor="middle" fill="#f3e8ff" font-size="13">(20 Bytes)</text>
+    </g>
+
+    <!-- Payload Box -->
+    <g transform="translate(550, 48)" filter="url(#shadow)">
+      <rect x="0" y="0" width="140" height="65" rx="6" fill="#0284c7" stroke="#7dd3fc" stroke-width="1.5" />
+      <text x="70" y="26" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="bold">"Hello"</text>
+      <text x="70" y="48" text-anchor="middle" fill="#e0f2fe" font-size="13">(5 Bytes)</text>
+    </g>
+
+    <!-- FCS Trailer -->
+    <g transform="translate(690, 48)" filter="url(#shadow)">
+      <rect x="0" y="0" width="130" height="65" rx="6" fill="#047857" stroke="#6ee7b7" stroke-width="1.5" />
+      <text x="65" y="26" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="bold">FCS Trailer</text>
+      <text x="65" y="48" text-anchor="middle" fill="#d1fae5" font-size="13">(4 Bytes)</text>
+      <rect x="0" y="70" width="130" height="32" rx="4" fill="#022c22" stroke="#059669" stroke-width="1" />
+      <text x="65" y="90" text-anchor="middle" fill="#a7f3d0" font-size="12" font-family="monospace">CRC32 Check</text>
+    </g>
+
+    <!-- PDU Label -->
+    <rect x="835" y="60" width="165" height="40" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="917" y="85" text-anchor="middle" fill="#f8fafc" font-size="13" font-weight="bold">(63B*) ➔ <tspan fill="#34d399">Frame</tspan></text>
+  </g>
+
+  <!-- Arrow L2 -> L1 -->
+  <line x1="440" y1="785" x2="440" y2="815" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)" />
+
+  <!-- ==================== LAYER 1: PHYSICAL ==================== -->
+  <g transform="translate(30, 820)">
+    <rect x="0" y="0" width="235" height="30" rx="6" fill="#1e293b" stroke="#f43f5e" stroke-width="1.5" />
+    <text x="117" y="20" text-anchor="middle" fill="#fb7185" font-size="13" font-weight="bold">Layer 1: Physical (On the Wire)</text>
+
+    <!-- Preamble -->
+    <g transform="translate(10, 36)" filter="url(#shadow)">
+      <rect x="0" y="0" width="130" height="50" rx="6" fill="#e11d48" stroke="#fda4af" stroke-width="1.5" />
+      <text x="65" y="22" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="bold">Preamble</text>
+      <text x="65" y="40" text-anchor="middle" fill="#ffe4e6" font-size="12">(8 Bytes)</text>
+    </g>
+
+    <!-- Frame on wire -->
+    <g transform="translate(140, 36)" filter="url(#shadow)">
+      <rect x="0" y="0" width="680" height="50" rx="6" fill="#334155" stroke="#94a3b8" stroke-width="1.5" />
+      <text x="340" y="21" text-anchor="middle" fill="#f8fafc" font-size="14" font-weight="bold">Ethernet Frame (Padded to 64 Bytes Minimum)</text>
+      <text x="340" y="41" text-anchor="middle" fill="#38bdf8" font-size="12" font-family="monospace">10101010... Electrical / Optical / Radio Signals</text>
+    </g>
+
+    <!-- PDU Label -->
+    <rect x="835" y="41" width="165" height="40" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="917" y="66" text-anchor="middle" fill="#fb7185" font-size="13" font-weight="bold">72B on Wire (Bits)</text>
+  </g>
+</svg>

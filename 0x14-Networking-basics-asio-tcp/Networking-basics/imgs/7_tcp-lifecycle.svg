@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 1050" role="img" aria-labelledby="title desc">
+  <title id="title">TCP Connection Life Cycle</title>
+  <desc id="desc">A simple diagram of the TCP handshake, data transfer, and connection close between a client and a server.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#1e293b"/>
+    </linearGradient>
+    <marker id="blueArrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#38bdf8"/>
+    </marker>
+    <marker id="greenArrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#34d399"/>
+    </marker>
+    <marker id="purpleArrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#c084fc"/>
+    </marker>
+    <marker id="redArrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#fb7185"/>
+    </marker>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; }
+      .main-title { fill: #f8fafc; font-size: 26px; font-weight: 700; }
+      .subtitle { fill: #cbd5e1; font-size: 14px; }
+      .box-title { fill: #ffffff; font-size: 17px; font-weight: 700; }
+      .box-small { fill: #e2e8f0; font-size: 12px; }
+      .section { font-size: 17px; font-weight: 700; }
+      .arrow-label { font-size: 14px; font-weight: 700; }
+      .note { fill: #cbd5e1; font-size: 13px; }
+      .mono { font-family: Consolas, Monaco, monospace; }
+    </style>
+  </defs>
+
+  <rect width="1100" height="1050" rx="14" fill="url(#bg)"/>
+  <text x="550" y="42" text-anchor="middle" class="main-title">TCP Connection Life Cycle</text>
+  <text x="550" y="67" text-anchor="middle" class="subtitle">Handshake  →  Data Transfer  →  Connection Close</text>
+
+  <rect x="100" y="88" width="300" height="62" rx="10" fill="#0369a1" stroke="#7dd3fc" stroke-width="2"/>
+  <text x="250" y="114" text-anchor="middle" class="box-title">TCP Client</text>
+  <text x="250" y="135" text-anchor="middle" class="box-small mono">192.168.1.10 : 50111</text>
+  <rect x="700" y="88" width="300" height="62" rx="10" fill="#047857" stroke="#6ee7b7" stroke-width="2"/>
+  <text x="850" y="114" text-anchor="middle" class="box-title">TCP Server</text>
+  <text x="850" y="135" text-anchor="middle" class="box-small mono">192.168.1.21 : 8080</text>
+  <line x1="250" y1="150" x2="250" y2="1010" stroke="#475569" stroke-width="2" stroke-dasharray="7 7"/>
+  <line x1="850" y1="150" x2="850" y2="1010" stroke="#475569" stroke-width="2" stroke-dasharray="7 7"/>
+
+  <!-- Handshake -->
+  <rect x="35" y="170" width="1030" height="230" rx="12" fill="#0b1220" stroke="#334155"/>
+  <text x="55" y="198" class="section" fill="#38bdf8">1. Open the Connection</text>
+  <rect x="65" y="218" width="150" height="42" rx="6" fill="#172554" stroke="#38bdf8"/>
+  <text x="140" y="244" text-anchor="middle" fill="#bfdbfe" font-size="13">connect()</text>
+  <line x1="260" y1="236" x2="835" y2="260" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#blueArrow)"/>
+  <text x="545" y="231" text-anchor="middle" class="arrow-label" fill="#7dd3fc">1. SYN  ·  Seq = 100</text>
+
+  <line x1="840" y1="282" x2="265" y2="307" stroke="#34d399" stroke-width="2.5" marker-end="url(#greenArrow)"/>
+  <text x="550" y="278" text-anchor="middle" class="arrow-label" fill="#6ee7b7">2. SYN-ACK  ·  Seq = 500, Ack = 101</text>
+  <line x1="260" y1="333" x2="835" y2="357" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#blueArrow)"/>
+  <text x="545" y="328" text-anchor="middle" class="arrow-label" fill="#7dd3fc">3. ACK  ·  Seq = 101, Ack = 501</text>
+  <text x="550" y="384" text-anchor="middle" class="note">The connection is now ready to carry data.</text>
+
+  <!-- Data transfer -->
+  <rect x="35" y="415" width="1030" height="235" rx="12" fill="#0b1220" stroke="#334155"/>
+  <text x="55" y="443" class="section" fill="#c084fc">2. Send Data</text>
+  <rect x="65" y="462" width="150" height="42" rx="6" fill="#2e1065" stroke="#c084fc"/>
+  <text x="140" y="488" text-anchor="middle" fill="#e9d5ff" font-size="13" class="mono">"Hello" (5 bytes)</text>
+  <line x1="260" y1="480" x2="835" y2="505" stroke="#c084fc" stroke-width="2.5" marker-end="url(#purpleArrow)"/>
+  <text x="550" y="474" text-anchor="middle" class="arrow-label" fill="#e9d5ff">4. Data  ·  Seq = 101, Length = 5</text>
+  <line x1="840" y1="545" x2="265" y2="570" stroke="#34d399" stroke-width="2.5" marker-end="url(#greenArrow)"/>
+  <text x="550" y="539" text-anchor="middle" class="arrow-label" fill="#6ee7b7">5. ACK = 106</text>
+  <text x="550" y="600" text-anchor="middle" class="note">ACK = 106 means: “I got bytes up to 105. Send byte 106 next.”</text>
+  <text x="550" y="624" text-anchor="middle" class="note">These sequence numbers are examples. Real connections use different start numbers.</text>
+
+  <!-- Close -->
+  <rect x="35" y="665" width="1030" height="320" rx="12" fill="#0b1220" stroke="#334155"/>
+  <text x="55" y="693" class="section" fill="#fb7185">3. Close the Connection</text>
+  <line x1="260" y1="725" x2="835" y2="746" stroke="#fb7185" stroke-width="2.5" marker-end="url(#redArrow)"/>
+  <text x="550" y="719" text-anchor="middle" class="arrow-label" fill="#fda4af">6. FIN  ·  Client has no more data</text>
+  <line x1="840" y1="767" x2="265" y2="788" stroke="#34d399" stroke-width="2.5" marker-end="url(#greenArrow)"/>
+  <text x="550" y="761" text-anchor="middle" class="arrow-label" fill="#6ee7b7">7. ACK  ·  Server confirms FIN</text>
+  <line x1="840" y1="817" x2="265" y2="838" stroke="#fb7185" stroke-width="2.5" marker-end="url(#redArrow)"/>
+  <text x="550" y="811" text-anchor="middle" class="arrow-label" fill="#fda4af">8. FIN  ·  Server has no more data</text>
+  <line x1="260" y1="867" x2="835" y2="888" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#blueArrow)"/>
+  <text x="550" y="861" text-anchor="middle" class="arrow-label" fill="#7dd3fc">9. ACK  ·  Client confirms FIN</text>
+  <rect x="85" y="916" width="930" height="48" rx="8" fill="#451a03" stroke="#f59e0b"/>
+  <text x="550" y="936" text-anchor="middle" fill="#fcd34d" font-size="14" font-weight="700">The side that closes first usually enters TIME_WAIT.</text>
+  <text x="550" y="953" text-anchor="middle" fill="#fde68a" font-size="12">The exact wait time depends on the system.</text>
+  <text x="550" y="1025" text-anchor="middle" fill="#94a3b8" font-size="12">Simplified example — packet flags and sequence values can vary.</text>
+</svg>

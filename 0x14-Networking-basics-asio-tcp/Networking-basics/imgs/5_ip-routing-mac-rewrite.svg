@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 800" width="100%" height="100%" style="background-color: #0f172a; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;">
+  <defs>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#10b981"/>
+    </marker>
+    <marker id="arrowAmber" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#f59e0b"/>
+    </marker>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <rect width="1100" height="800" fill="url(#bgGrad)"/>
+
+  <!-- Title -->
+  <text x="550" y="42" text-anchor="middle" fill="#f8fafc" font-size="22" font-weight="bold">Phase Three: The Packet’s Journey Through the Router — IP Remains Constant, MAC Changes</text>
+  <text x="550" y="68" text-anchor="middle" fill="#94a3b8" font-size="14">How a Boost.Asio connection travels from your local area network (LAN) to an external server via the default gateway</text>
+
+  <!-- ==================== NODES ==================== -->
+  <!-- Node 1: Client -->
+  <g transform="translate(50, 95)" filter="url(#shadow)">
+    <rect x="0" y="0" width="250" height="82" rx="10" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+    <text x="125" y="26" text-anchor="middle" fill="#38bdf8" font-size="16" font-weight="bold">جهازك (Client)</text>
+    <text x="125" y="48" text-anchor="middle" fill="#f8fafc" font-size="13" font-family="monospace">IP: 192.168.1.10/24</text>
+    <text x="125" y="68" text-anchor="middle" fill="#94a3b8" font-size="13" font-family="monospace">MAC: aa:aa:aa:aa:aa:aa</text>
+  </g>
+
+  <!-- Node 2: Router (Default Gateway) -->
+  <g transform="translate(405, 95)" filter="url(#shadow)">
+    <rect x="0" y="0" width="290" height="82" rx="10" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+    <text x="145" y="26" text-anchor="middle" fill="#fbbf24" font-size="16" font-weight="bold">الراوتر (Default Gateway)</text>
+    <text x="145" y="48" text-anchor="middle" fill="#fde68a" font-size="12" font-family="monospace">LAN: 192.168.1.1 (MAC: rr:rr:11)</text>
+    <text x="145" y="68" text-anchor="middle" fill="#fdba74" font-size="12" font-family="monospace">WAN: 10.0.0.1    (MAC: rr:rr:22)</text>
+  </g>
+
+  <!-- Node 3: Remote Server -->
+  <g transform="translate(800, 95)" filter="url(#shadow)">
+    <rect x="0" y="0" width="250" height="82" rx="10" fill="#1e293b" stroke="#a855f7" stroke-width="2"/>
+    <text x="125" y="26" text-anchor="middle" fill="#c084fc" font-size="16" font-weight="bold">السيرفر البعيد (Server)</text>
+    <text x="125" y="48" text-anchor="middle" fill="#f8fafc" font-size="13" font-family="monospace">IP: 10.0.0.50/24</text>
+    <text x="125" y="68" text-anchor="middle" fill="#94a3b8" font-size="13" font-family="monospace">MAC: ss:ss:ss:ss:ss:ss</text>
+  </g>
+
+  <!-- Lifelines -->
+  <line x1="175" y1="177" x2="175" y2="755" stroke="#475569" stroke-width="3" stroke-dasharray="8,6"/>
+  <line x1="550" y1="177" x2="550" y2="755" stroke="#f59e0b" stroke-width="3" stroke-dasharray="8,6"/>
+  <line x1="925" y1="177" x2="925" y2="755" stroke="#475569" stroke-width="3" stroke-dasharray="8,6"/>
+
+  <!-- ==================== STEP 1: KERNEL ROUTING DECISION ==================== -->
+  <g transform="translate(35, 200)" filter="url(#shadow)">
+    <rect x="0" y="0" width="330" height="92" rx="8" fill="#1e1b4b" stroke="#818cf8" stroke-width="1.8"/>
+    <text x="165" y="22" text-anchor="middle" fill="#a5b4fc" font-size="13" font-weight="bold">1. Routing Table Decision in the Linux Kernel:</text>
+    <text x="165" y="43" text-anchor="middle" fill="#e0e7ff" font-size="12" font-family="monospace">10.0.0.50 &amp; /24 != 192.168.1.0</text>
+    <text x="165" y="64" text-anchor="middle" fill="#38bdf8" font-size="12" font-weight="bold">Destination is outside the network ➔ Send</text>
+    <text x="165" y="85" text-anchor="middle" fill="#38bdf8" font-size="12" font-weight="bold">to the Gateway (192.168.1.1)</text>
+  </g>
+
+  <!-- ==================== STEP 2: HOP 1 (CLIENT TO ROUTER) ==================== -->
+  <g transform="translate(0, 305)">
+    <g transform="translate(200, 0)" filter="url(#shadow)">
+      <rect x="0" y="0" width="320" height="105" rx="8" fill="#082f49" stroke="#38bdf8" stroke-width="1.8"/>
+      <text x="160" y="24" text-anchor="middle" fill="#38bdf8" font-size="14" font-weight="bold">2. First Hop (Hop 1 — LAN Frame)</text>
+      <rect x="12" y="34" width="296" height="28" rx="4" fill="#059669"/>
+      <text x="160" y="53" text-anchor="middle" fill="#ffffff" font-size="12" font-family="monospace" font-weight="bold">L2 MAC: aa:aa:aa ➔ rr:rr:11 (الراوتر)</text>
+      <rect x="12" y="68" width="296" height="28" rx="4" fill="#d97706"/>
+      <text x="160" y="87" text-anchor="middle" fill="#ffffff" font-size="12" font-family="monospace" font-weight="bold">L3 IP : 192.168.1.10 ➔ 10.0.0.50 | TTL=64</text>
+    </g>
+    <line x1="180" y1="120" x2="538" y2="120" stroke="#38bdf8" stroke-width="3.5" marker-end="url(#arrowBlue)"/>
+  </g>
+
+  <!-- ==================== STEP 3: ROUTER ACTION ==================== -->
+  <g transform="translate(365, 450)" filter="url(#shadow)">
+    <rect x="-9" y="0" width="390" height="90" rx="8" fill="#451a03" stroke="#f59e0b" stroke-width="2"/>
+    <text x="185" y="24" text-anchor="middle" fill="#fbbf24" font-size="14" font-weight="bold">3. What does the router do inside the packet?</text>
+    <text x="185" y="46" text-anchor="middle" fill="#fde68a" font-size="12">• Removes the old Ethernet header (aa:aa ➔ rr:rr:11)</text>
+    <text x="185" y="65" text-anchor="middle" fill="#fde68a" font-size="12">• Decreases TTL by 1 (TTL becomes 63) and recalculates the Checksum</text>
+    <text x="185" y="82" text-anchor="middle" fill="#34d399" font-size="12" font-weight="bold">• Wraps with a new Ethernet Header towards the server</text>
+  </g>
+
+  <!-- ==================== STEP 4: HOP 2 (ROUTER TO SERVER) ==================== -->
+  <g transform="translate(0, 565)">
+    <g transform="translate(575, 0)" filter="url(#shadow)">
+      <rect x="0" y="0" width="320" height="105" rx="8" fill="#022c22" stroke="#10b981" stroke-width="1.8"/>
+      <text x="160" y="24" text-anchor="middle" fill="#34d399" font-size="14" font-weight="bold">4. Second Hop (Hop 2 — WAN Frame)</text>
+      <rect x="12" y="34" width="296" height="28" rx="4" fill="#059669"/>
+      <text x="160" y="53" text-anchor="middle" fill="#ffffff" font-size="12" font-family="monospace" font-weight="bold">L2 MAC: rr:rr:22 ➔ ss:ss:ss (تغيّر!)</text>
+      <rect x="12" y="68" width="296" height="28" rx="4" fill="#d97706"/>
+      <text x="160" y="87" text-anchor="middle" fill="#ffffff" font-size="12" font-family="monospace" font-weight="bold">L3 IP : 192.168.1.10 ➔ 10.0.0.50 | TTL=63</text>
+    </g>
+    <line x1="555" y1="120" x2="913" y2="120" stroke="#10b981" stroke-width="3.5" marker-end="url(#arrowGreen)"/>
+  </g>
+
+  <!-- Bottom Summary Banner -->
+  <rect x="150" y="715" width="800" height="60" rx="8" fill="#1e293b" stroke="#64748b" stroke-width="1.5"/>
+  <text x="550" y="741" text-anchor="middle" fill="#f8fafc" font-size="14" font-weight="bold">The Golden Rule: The <tspan fill="#fbbf24">IP Header</tspan> remains constant from start to finish (except for the TTL),</text>
+  <text x="550" y="761" text-anchor="middle" fill="#f8fafc" font-size="14" font-weight="bold">whereas the <tspan fill="#34d399">Ethernet MAC Header</tspan> changes at every router!</text>
+</svg>
