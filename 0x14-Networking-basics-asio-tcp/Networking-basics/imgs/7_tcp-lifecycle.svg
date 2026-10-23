@@ -1,88 +1,139 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 1050" role="img" aria-labelledby="title desc">
-  <title id="title">TCP Connection Life Cycle</title>
-  <desc id="desc">A simple diagram of the TCP handshake, data transfer, and connection close between a client and a server.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 920" width="100%" height="100%" style="background-color: #0f172a; font-family: &#39;Segoe UI&#39;, system-ui, -apple-system, sans-serif;" xmlns:c2pa="http://c2pa.org/manifest"><metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTphNWMyMDkxNC0wZDBhLTQ4ZDItODVhZi02ZGRkMTdjYzk3MDYAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaC7yGbYRZvgJXgtpAPzVGaUAAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDo0MTk1ZmI0OS0xYjQ5LTRiOGEtYTkwYS00NGI1Mjg1NDFjYTBscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNoBuymVxKR7XnD4uSzOTZHGgAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggXjoOqgjKqoGxZzXPiX0T+2jWiCfBt+C4weF3WArnKzakZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaFy68vVi6sewl32OELJoEFkAAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRMAAAAAAAAAAAAAAAAZGhhc2hYIFqdBisVGCh2/Y3dzluSMKdVdYZ+0ALqAoeBtlVW3XNZZG5hbWVuanVtYmYgbWFuaWZlc3RqZXhjbHVzaW9uc4GiZXN0YXJ0GQEDZmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOmE1YzIwOTE0LTBkMGEtNDhkMi04NWFmLTZkZGQxN2NjOTcwNi9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOjhiNWJhNTk2LTU5ZjMtNDA3Yi04OGM1LTNlMjE3NDAzZDMyZnJjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCBeOg6qCMqqgbFnNc+JfRP7aNaIJ8G34LjB4XdYCucrNqJjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFggNQ6AFQb/uHkKNha3RB+UadhMxbAQDMDhn658C95ns0eiY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFggL65X27EfNwKc+0Xw5cLq5U7cGRQBrEJh6r3tVm0ogF50Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQMpDtQkVqjYNHpgnv5KM1RLtNad8zCj3vyas/7c8p/mbrfVvUn8AEFLnmhJBiHrTOTGhuCWjQj7hvKTC+HFl4sI=</c2pa:manifest></metadata>
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#0f172a"/>
-      <stop offset="1" stop-color="#1e293b"/>
+    <marker id="arrowRight" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8" />
+    </marker>
+    <marker id="arrowLeft" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#34d399" />
+    </marker>
+    <marker id="arrowDataRight" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#c084fc" />
+    </marker>
+    <marker id="arrowFin" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#fb7185" />
+    </marker>
+    <linearGradient id="bgGradTcp" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
     </linearGradient>
-    <marker id="blueArrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-      <path d="M0,0 L8,4 L0,8 Z" fill="#38bdf8"/>
-    </marker>
-    <marker id="greenArrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-      <path d="M0,0 L8,4 L0,8 Z" fill="#34d399"/>
-    </marker>
-    <marker id="purpleArrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-      <path d="M0,0 L8,4 L0,8 Z" fill="#c084fc"/>
-    </marker>
-    <marker id="redArrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-      <path d="M0,0 L8,4 L0,8 Z" fill="#fb7185"/>
-    </marker>
-    <style>
-      text { font-family: Arial, Helvetica, sans-serif; }
-      .main-title { fill: #f8fafc; font-size: 26px; font-weight: 700; }
-      .subtitle { fill: #cbd5e1; font-size: 14px; }
-      .box-title { fill: #ffffff; font-size: 17px; font-weight: 700; }
-      .box-small { fill: #e2e8f0; font-size: 12px; }
-      .section { font-size: 17px; font-weight: 700; }
-      .arrow-label { font-size: 14px; font-weight: 700; }
-      .note { fill: #cbd5e1; font-size: 13px; }
-      .mono { font-family: Consolas, Monaco, monospace; }
-    </style>
   </defs>
 
-  <rect width="1100" height="1050" rx="14" fill="url(#bg)"/>
-  <text x="550" y="42" text-anchor="middle" class="main-title">TCP Connection Life Cycle</text>
-  <text x="550" y="67" text-anchor="middle" class="subtitle">Handshake  →  Data Transfer  →  Connection Close</text>
+  <rect width="1100" height="920" fill="url(#bgGradTcp)" />
 
-  <rect x="100" y="88" width="300" height="62" rx="10" fill="#0369a1" stroke="#7dd3fc" stroke-width="2"/>
-  <text x="250" y="114" text-anchor="middle" class="box-title">TCP Client</text>
-  <text x="250" y="135" text-anchor="middle" class="box-small mono">192.168.1.10 : 50111</text>
-  <rect x="700" y="88" width="300" height="62" rx="10" fill="#047857" stroke="#6ee7b7" stroke-width="2"/>
-  <text x="850" y="114" text-anchor="middle" class="box-title">TCP Server</text>
-  <text x="850" y="135" text-anchor="middle" class="box-small mono">192.168.1.21 : 8080</text>
-  <line x1="250" y1="150" x2="250" y2="1010" stroke="#475569" stroke-width="2" stroke-dasharray="7 7"/>
-  <line x1="850" y1="150" x2="850" y2="1010" stroke="#475569" stroke-width="2" stroke-dasharray="7 7"/>
+  <!-- Title -->
+  <text x="550" y="38" text-anchor="middle" fill="#f8fafc" font-size="22" font-weight="bold">TCP lifecycle and its relationship to Boost.Asio and the Linux kernel</text>
+  <text x="550" y="62" text-anchor="middle" fill="#94a3b8" font-size="14">3-Way Handshake  ➔  Byte Stream (Seq/ACK)  ➔  4-Way Graceful Teardown</text>
 
-  <!-- Handshake -->
-  <rect x="35" y="170" width="1030" height="230" rx="12" fill="#0b1220" stroke="#334155"/>
-  <text x="55" y="198" class="section" fill="#38bdf8">1. Open the Connection</text>
-  <rect x="65" y="218" width="150" height="42" rx="6" fill="#172554" stroke="#38bdf8"/>
-  <text x="140" y="244" text-anchor="middle" fill="#bfdbfe" font-size="13">connect()</text>
-  <line x1="260" y1="236" x2="835" y2="260" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#blueArrow)"/>
-  <text x="545" y="231" text-anchor="middle" class="arrow-label" fill="#7dd3fc">1. SYN  ·  Seq = 100</text>
+  <!-- Client & Server Boxes -->
+  <g transform="translate(150, 80)">
+    <rect x="0" y="0" width="220" height="58" rx="8" fill="#0284c7" stroke="#7dd3fc" stroke-width="2" />
+    <text x="110" y="25" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="bold">TCP Client</text>
+    <text x="110" y="45" text-anchor="middle" fill="#e0f2fe" font-size="12" font-family="monospace">192.168.1.10 : 50111</text>
+  </g>
 
-  <line x1="840" y1="282" x2="265" y2="307" stroke="#34d399" stroke-width="2.5" marker-end="url(#greenArrow)"/>
-  <text x="550" y="278" text-anchor="middle" class="arrow-label" fill="#6ee7b7">2. SYN-ACK  ·  Seq = 500, Ack = 101</text>
-  <line x1="260" y1="333" x2="835" y2="357" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#blueArrow)"/>
-  <text x="545" y="328" text-anchor="middle" class="arrow-label" fill="#7dd3fc">3. ACK  ·  Seq = 101, Ack = 501</text>
-  <text x="550" y="384" text-anchor="middle" class="note">The connection is now ready to carry data.</text>
+  <g transform="translate(730, 80)">
+    <rect x="0" y="0" width="220" height="58" rx="8" fill="#059669" stroke="#6ee7b7" stroke-width="2" />
+    <text x="110" y="25" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="bold">Asio C++ Server</text>
+    <text x="110" y="45" text-anchor="middle" fill="#d1fae5" font-size="12" font-family="monospace">192.168.1.21 : 8080 (LISTEN)</text>
+  </g>
 
-  <!-- Data transfer -->
-  <rect x="35" y="415" width="1030" height="235" rx="12" fill="#0b1220" stroke="#334155"/>
-  <text x="55" y="443" class="section" fill="#c084fc">2. Send Data</text>
-  <rect x="65" y="462" width="150" height="42" rx="6" fill="#2e1065" stroke="#c084fc"/>
-  <text x="140" y="488" text-anchor="middle" fill="#e9d5ff" font-size="13" class="mono">"Hello" (5 bytes)</text>
-  <line x1="260" y1="480" x2="835" y2="505" stroke="#c084fc" stroke-width="2.5" marker-end="url(#purpleArrow)"/>
-  <text x="550" y="474" text-anchor="middle" class="arrow-label" fill="#e9d5ff">4. Data  ·  Seq = 101, Length = 5</text>
-  <line x1="840" y1="545" x2="265" y2="570" stroke="#34d399" stroke-width="2.5" marker-end="url(#greenArrow)"/>
-  <text x="550" y="539" text-anchor="middle" class="arrow-label" fill="#6ee7b7">5. ACK = 106</text>
-  <text x="550" y="600" text-anchor="middle" class="note">ACK = 106 means: “I got bytes up to 105. Send byte 106 next.”</text>
-  <text x="550" y="624" text-anchor="middle" class="note">These sequence numbers are examples. Real connections use different start numbers.</text>
+  <!-- Vertical Timelines -->
+  <line x1="260" y1="138" x2="260" y2="880" stroke="#475569" stroke-width="3" stroke-dasharray="6,6" />
+  <line x1="840" y1="138" x2="840" y2="880" stroke="#475569" stroke-width="3" stroke-dasharray="6,6" />
 
-  <!-- Close -->
-  <rect x="35" y="665" width="1030" height="320" rx="12" fill="#0b1220" stroke="#334155"/>
-  <text x="55" y="693" class="section" fill="#fb7185">3. Close the Connection</text>
-  <line x1="260" y1="725" x2="835" y2="746" stroke="#fb7185" stroke-width="2.5" marker-end="url(#redArrow)"/>
-  <text x="550" y="719" text-anchor="middle" class="arrow-label" fill="#fda4af">6. FIN  ·  Client has no more data</text>
-  <line x1="840" y1="767" x2="265" y2="788" stroke="#34d399" stroke-width="2.5" marker-end="url(#greenArrow)"/>
-  <text x="550" y="761" text-anchor="middle" class="arrow-label" fill="#6ee7b7">7. ACK  ·  Server confirms FIN</text>
-  <line x1="840" y1="817" x2="265" y2="838" stroke="#fb7185" stroke-width="2.5" marker-end="url(#redArrow)"/>
-  <text x="550" y="811" text-anchor="middle" class="arrow-label" fill="#fda4af">8. FIN  ·  Server has no more data</text>
-  <line x1="260" y1="867" x2="835" y2="888" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#blueArrow)"/>
-  <text x="550" y="861" text-anchor="middle" class="arrow-label" fill="#7dd3fc">9. ACK  ·  Client confirms FIN</text>
-  <rect x="85" y="916" width="930" height="48" rx="8" fill="#451a03" stroke="#f59e0b"/>
-  <text x="550" y="936" text-anchor="middle" fill="#fcd34d" font-size="14" font-weight="700">The side that closes first usually enters TIME_WAIT.</text>
-  <text x="550" y="953" text-anchor="middle" fill="#fde68a" font-size="12">The exact wait time depends on the system.</text>
-  <text x="550" y="1025" text-anchor="middle" fill="#94a3b8" font-size="12">Simplified example — packet flags and sequence values can vary.</text>
+  <!-- ================= PHASE 1: 3-WAY HANDSHAKE ================= -->
+  <rect x="30" y="155" width="1040" height="205" rx="8" fill="#1e293b" fill-opacity="0.55" stroke="#334155" stroke-width="1.5" />
+  <text x="50" y="180" fill="#38bdf8" font-size="15" font-weight="bold">1. مرحلة فتح الاتصال (3-Way Handshake)</text>
+
+  <!-- Client Note -->
+  <rect x="45" y="195" width="195" height="44" rx="5" fill="#0f172a" stroke="#38bdf8" stroke-width="1" />
+  <text x="142" y="214" text-anchor="middle" fill="#7dd3fc" font-size="12" font-family="monospace">socket.connect()</text>
+  <text x="142" y="231" text-anchor="middle" fill="#94a3b8" font-size="11">State: SYN_SENT</text>
+
+  <!-- Step 1: SYN -->
+  <line x1="265" y1="205" x2="830" y2="235" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrowRight)" />
+  <text x="547.5" y="211" transform="rotate(3.04 547.5 220)" text-anchor="middle" fill="#38bdf8" font-size="13" font-family="monospace" font-weight="bold">[1] SYN (Seq = 0, Win = 64240, MSS = 1460)</text>
+
+  <!-- Server Note SYN Queue -->
+  <rect x="855" y="215" width="200" height="44" rx="5" fill="#0f172a" stroke="#64748b" stroke-width="1" />
+  <text x="955" y="234" text-anchor="middle" fill="#cbd5e1" font-size="12">يدخل الـ SYN Queue</text>
+  <text x="955" y="251" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="monospace">State: SYN_RCVD</text>
+
+  <!-- Step 2: SYN-ACK -->
+  <line x1="835" y1="260" x2="270" y2="290" stroke="#34d399" stroke-width="2.5" marker-end="url(#arrowLeft)" />
+  <text x="552.5" y="266" transform="rotate(-3.04 552.5 275)" text-anchor="middle" fill="#34d399" font-size="13" font-family="monospace" font-weight="bold">[2] SYN-ACK (Seq = 0, Ack = 1, Win = 65160, MSS = 1460)</text>
+
+  <!-- Step 3: ACK -->
+  <line x1="265" y1="310" x2="830" y2="340" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrowRight)" />
+  <text x="547.5" y="316" transform="rotate(3.04 547.5 325)" text-anchor="middle" fill="#38bdf8" font-size="13" font-family="monospace" font-weight="bold">[3] ACK (Seq = 1, Ack = 1)  ➔  Connection ESTABLISHED!</text>
+
+  <!-- Server Note Accept Queue -->
+  <rect x="855" y="305" width="205" height="48" rx="5" fill="#064e3b" stroke="#34d399" stroke-width="1.5" />
+  <text x="957" y="325" text-anchor="middle" fill="#6ee7b7" font-size="12" font-weight="bold">It moves to the Accept Queue!</text>
+  <text x="957" y="343" text-anchor="middle" fill="#ffffff" font-size="10.5" font-family="monospace">async_accept() callback fires</text>
+
+  <!-- ================= PHASE 2: DATA TRANSFER ================= -->
+  <rect x="30" y="375" width="1040" height="235" rx="8" fill="#1e293b" fill-opacity="0.55" stroke="#334155" stroke-width="1.5" />
+  <text x="50" y="400" fill="#c084fc" font-size="15" font-weight="bold">2. مرحلة نقل البيانات (Byte Stream, Sequence Numbers &amp; Acknowledgments)</text>
+
+  <!-- Send "Hello" (5 Bytes) -->
+  <rect x="45" y="418" width="195" height="42" rx="5" fill="#0f172a" stroke="#c084fc" stroke-width="1" />
+  <text x="142" y="436" text-anchor="middle" fill="#e9d5ff" font-size="12" font-family="monospace">send("Hello") // 5 Bytes</text>
+  <text x="142" y="452" text-anchor="middle" fill="#94a3b8" font-size="11">Bytes #1, #2, #3, #4, #5</text>
+
+  <line x1="265" y1="430" x2="830" y2="465" stroke="#c084fc" stroke-width="2.5" marker-end="url(#arrowDataRight)" />
+  <text x="547.5" y="438.5" transform="rotate(3.54 547.5 447.5)" text-anchor="middle" fill="#e9d5ff" font-size="13" font-family="monospace" font-weight="bold">[4] PSH, ACK (Seq = 1, Ack = 1, Len = 5)  Payload: "Hello"</text>
+
+  <!-- Server Reads -->
+  <rect x="855" y="445" width="205" height="45" rx="5" fill="#0f172a" stroke="#c084fc" stroke-width="1" />
+  <text x="957" y="464" text-anchor="middle" fill="#e9d5ff" font-size="11" font-family="monospace">async_read_some() -> 5B</text>
+  <text x="957" y="481" text-anchor="middle" fill="#94a3b8" font-size="11">Next expected byte = 1 + 5 = 6</text>
+
+  <!-- Server ACK + Echo -->
+  <line x1="835" y1="495" x2="270" y2="530" stroke="#34d399" stroke-width="2.5" marker-end="url(#arrowLeft)" />
+  <text x="552.5" y="503.5" transform="rotate(-3.54 552.5 512.5)" text-anchor="middle" fill="#34d399" font-size="13" font-family="monospace" font-weight="bold">[5] PSH, ACK (Seq = 1, Ack = 6, Len = 5)  Echo: "Hello"</text>
+  <text x="550" y="551" text-anchor="middle" fill="#94a3b8" font-size="12">(لاحظ: Ack = 6 معناها استلمت لحد بايت 5 بنجاح ومستني منك بايت رقم 6)</text>
+
+  <!-- Client ACKs Server's Echo -->
+  <line x1="265" y1="570" x2="830" y2="600" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrowRight)" />
+  <text x="547.5" y="576" transform="rotate(3.04 547.5 585)" text-anchor="middle" fill="#38bdf8" font-size="13" font-family="monospace">[6] ACK (Seq = 6, Ack = 6, Len = 0)</text>
+
+  <!-- ================= PHASE 3: CONNECTION TEARDOWN ================= -->
+  <rect x="30" y="625" width="1040" height="270" rx="8" fill="#1e293b" fill-opacity="0.55" stroke="#334155" stroke-width="1.5" />
+  <text x="50" y="650" fill="#fb7185" font-size="15" font-weight="bold">3. مرحلة إغلاق الاتصال بنظافة (4-Way Teardown &amp; EOF &amp; TIME_WAIT)</text>
+
+  <!-- Client calls close() -->
+  <rect x="45" y="665" width="195" height="44" rx="5" fill="#0f172a" stroke="#fb7185" stroke-width="1" />
+  <text x="142" y="684" text-anchor="middle" fill="#fda4af" font-size="12" font-family="monospace">close(fd) / Ctrl+C</text>
+  <text x="142" y="701" text-anchor="middle" fill="#94a3b8" font-size="11">State: FIN_WAIT_1</text>
+
+  <!-- FIN 1 -->
+  <line x1="265" y1="680" x2="830" y2="710" stroke="#fb7185" stroke-width="2.5" marker-end="url(#arrowFin)" />
+  <text x="547.5" y="686" transform="rotate(3.04 547.5 695)" text-anchor="middle" fill="#fda4af" font-size="13" font-family="monospace" font-weight="bold">[7] FIN, ACK (Seq = 6, Ack = 6)</text>
+
+  <!-- Server receives EOF -->
+  <rect x="855" y="690" width="205" height="50" rx="5" fill="#4c0519" stroke="#fb7185" stroke-width="1.5" />
+  <text x="957" y="710" text-anchor="middle" fill="#fda4af" font-size="12" font-weight="bold">asio::error::eof!</text>
+  <text x="957" y="728" text-anchor="middle" fill="#ffffff" font-size="11" font-family="monospace">State: CLOSE_WAIT</text>
+
+  <!-- ACK of FIN 1 -->
+  <line x1="835" y1="735" x2="270" y2="765" stroke="#34d399" stroke-width="2" marker-end="url(#arrowLeft)" />
+  <text x="552.5" y="741" transform="rotate(-3.04 552.5 750)" text-anchor="middle" fill="#34d399" font-size="13" font-family="monospace">[8] ACK (Seq = 6, Ack = 7)  ➔  Client enters FIN_WAIT_2</text>
+
+  <!-- Server calls conn->stop() -> FIN 2 -->
+  <rect x="855" y="765" width="205" height="44" rx="5" fill="#0f172a" stroke="#fb7185" stroke-width="1" />
+  <text x="957" y="784" text-anchor="middle" fill="#fda4af" font-size="12" font-family="monospace">conn->stop() / close()</text>
+  <text x="957" y="801" text-anchor="middle" fill="#94a3b8" font-size="11">State: LAST_ACK</text>
+
+  <line x1="835" y1="785" x2="270" y2="815" stroke="#fb7185" stroke-width="2.5" marker-end="url(#arrowFin)" />
+  <text x="552.5" y="791" transform="rotate(-3.04 552.5 800)" text-anchor="middle" fill="#fda4af" font-size="13" font-family="monospace" font-weight="bold">[9] FIN, ACK (Seq = 6, Ack = 7)</text>
+
+  <!-- Final ACK -->
+  <line x1="265" y1="835" x2="830" y2="865" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrowRight)" />
+  <text x="547.5" y="841" transform="rotate(3.04 547.5 850)" text-anchor="middle" fill="#38bdf8" font-size="13" font-family="monospace" font-weight="bold">[10] ACK (Seq = 7, Ack = 7)  ➔  Server CLOSED!</text>
+
+  <!-- TIME_WAIT Box -->
+  <rect x="45" y="822" width="195" height="55" rx="5" fill="#451a03" stroke="#f59e0b" stroke-width="1.5" />
+  <text x="142" y="842" text-anchor="middle" fill="#fcd34d" font-size="12" font-weight="bold">State: TIME_WAIT</text>
+  <text x="142" y="860" text-anchor="middle" fill="#fde68a" font-size="11">(ينتظر ~60 ثانية قبل الحذف)</text>
 </svg>

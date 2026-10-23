@@ -113,7 +113,7 @@ Bytes: 101 102 103 104 105
 توضح الصورة دورة الاتصال بثلاث مراحل: فتح الاتصال، وإرسال البيانات، ثم إغلاق الاتصال.
 
 <p align="center">
-    <img src="./imgs/7_tcp-lifecycle.svg" alt="cp-lifecycle" width="800">
+    <img src="./imgs/7_tcp-lifecycle.svg" alt="cp-lifecycle" width="1000">
 </p>
 
 ### الإغلاق الطبيعي: FIN وEOF
@@ -124,7 +124,7 @@ Bytes: 101 102 103 104 105
 
 ### الإغلاق غير الطبيعي: RST
 
-`RST` تعني أن الاتصال أُعيد ضبطه بدلًا من إغلاقه عبر تبادل FIN الطبيعي. قد يظهر ذلك في Asio مثل `asio::error::connection_reset`. السبب الدقيق يعتمد على سلوك التطبيق ونظام التشغيل وما حدث على الشبكة.
+ال `RST` تعني أن الاتصال أُعيد ضبطه بدلًا من إغلاقه عبر تبادل FIN الطبيعي. قد يظهر ذلك في Asio مثل `asio::error::connection_reset`. السبب الدقيق يعتمد على سلوك التطبيق ونظام التشغيل وما حدث على الشبكة.
 
 ### ما هي حالة `TIME_WAIT`؟
 
@@ -151,24 +151,25 @@ acceptor.listen();
 
 ## 5. Flow Control vs. Congestion Control
 
-| المقارنة | Flow Control | Congestion Control |
+| Comparison | Flow Control | Congestion Control |
 |---|---|---|
-| ما الذي يحميه؟ | المستقبل من استقبال بيانات أكثر مما يستطيع التعامل معه | الشبكة من الازدحام الزائد |
-| الآلية الأساسية | Receive Window (`rwnd`) | Congestion Window (`cwnd`) وخوارزمية التحكم بالازدحام |
-| الفكرة | المستقبل يعلن مقدار المساحة المتاحة لاستقبال البيانات | المرسل يحد من كمية البيانات غير المؤكدة وفق تقدير ازدحام الشبكة |
-| العلاقة بالتطبيق | التوقف عن القراءة قد يسبب امتلاء مخازن الاستقبال وتقليل نافذة الاستقبال | يديره TCP في Kernel وفق سلوك الشبكة والخوارزمية المستخدمة |
+| What does it protect? | The receiver from receiving more data than it can handle | The network from excessive congestion |
+| Primary mechanism | Receive Window (`rwnd`) | Congestion Window (`cwnd`) and congestion control algorithms |
+| Concept | The receiver advertises the amount of available space for incoming data | The sender limits the amount of unacknowledged data based on an estimate of network congestion |
+| Relation to the application | Stopping data consumption can fill up receive buffers, causing the receive window to shrink | Managed by TCP in the kernel, based on network behavior and the specific algorithm in use |
 
 يمكن تبسيط الحد الأعلى للبيانات غير المؤكدة أثناء الإرسال إلى أنه يتأثر بكل من `rwnd` و`cwnd`. لكن التفاصيل العملية تشمل أيضًا حدودًا أخرى مثل بيانات غير مؤكدة بالفعل وخيارات TCP وحالة الاتصال.
 
 ## 6. TCP vs. UDP
 
-| الميزة | TCP | UDP |
+| Feature | TCP | UDP |
 |---|---|---|
-| طريقة العمل | Connection-oriented | Connectionless |
-| شكل البيانات | Byte Stream؛ لا يحفظ حدود رسائل التطبيق | Datagram؛ يحفظ حدود كل Datagram عند الاستلام ما لم يحدث اقتطاع |
-| الترتيب وإعادة الإرسال | يوفر نقلًا موثوقًا ومرتبًا للبايتات أثناء نجاح الاتصال | لا يضمن التسليم أو الترتيب أو إعادة الإرسال |
-| حجم Header الأساسي | 20 bytes على الأقل | 8 bytes |
-| أمثلة | HTTP/1.1، HTTP/2، SSH، قواعد البيانات | DNS في حالات شائعة، بث لحظي، ألعاب؛ وHTTP/3 يستخدم QUIC فوق UDP |
+| Mode of Operation | Connection-oriented | Connectionless |
+| Data Format | Byte stream; does not preserve application message boundaries | Datagram; preserves the boundaries of each datagram upon receipt (unless truncation occurs) |
+| Ordering and Retransmission | Provides reliable, ordered byte transmission, assuming the connection remains intact | Does not guarantee delivery, ordering, or retransmission |
+| Base Header Size | At least 20 bytes | 8 bytes |
+| Examples | HTTP/1.1, HTTP/2, SSH, databases | DNS (in common scenarios), real-time streaming, gaming; HTTP/3 uses QUIC over UDP |
+
 
 TCP لا يضمن أن التطبيق البعيد عالج البيانات أو حفظها؛ هو يوفر آلية نقل موثوقة ومرتبة بين الطرفين ما دام الاتصال قادرًا على الاستمرار. وUDP لا يعني بالضرورة أنه أسرع دائمًا؛ الاختيار يعتمد على متطلبات التطبيق.
 
