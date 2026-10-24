@@ -203,6 +203,8 @@ ss -tanp '( dport = :8080 or sport = :8080 )'
 3. أي طرف يدخل عادةً في `TIME_WAIT`: الطرف الذي بدأ الإغلاق أم الطرف الذي استقبل أول `FIN`؟ وهل يمكن أن يتغير الطرف الذي يبدأ الإغلاق حسب طريقة إنهاء التطبيق؟
 4. لماذا لا يمكن الاعتماد على استدعاء واحد لـ `async_read_some()` لقراءة رسالة تطبيق كاملة؟
 
+THE ASWERS ARE IN [4_1_TCP-Fundamentals-Four-Questions.md](./4_1_TCP-Fundamentals-Four-Questions.md)
+
 ## What to Study Next
 
 الخطوة العملية المقترحة هي بناء **Length-Prefixed Framing** في مشروع C++/Boost.Asio، ثم تجربة إرسال عدة رسائل في دفعة واحدة ورسالة كبيرة تصل على عدة قراءات. هذه التجربة تربط مفهوم TCP Byte Stream مباشرةً بالكود.
