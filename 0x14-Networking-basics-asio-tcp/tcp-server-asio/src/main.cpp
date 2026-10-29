@@ -17,7 +17,7 @@ int main()
 
         // 2. Create the transport adapter (TCP Transport Adapter) and bind it to the application
         std::unique_ptr<netserver::IMessageEndpoint> server =
-            std::make_unique<netserver::TcpServer>(io, 8080);
+            std::make_unique<netserver::TcpServer>(io, 8080); // Base class pointer points to derived object
 
         server->start([&echo_handler](const netserver::InboundMessage& msg) {
             echo_handler.on_message(msg);
