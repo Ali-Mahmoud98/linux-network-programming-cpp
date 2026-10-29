@@ -2,8 +2,20 @@
 
 اللاب ده فيه جزأين:
 
-1. **[Networking-basics/](Networking-basics/):** دروس نظرية عن أساسيات الشبكات، من OSI model لحد TCP وإزاي بنراقبه على Linux.
-2. **[tcp-server-asio/](tcp-server-asio/):** إعادة تصميم سيرفر [lab 0x13](../0x13-asio-tcp-server/) بمعمارية **Hexagonal (Ports & Adapters)**، بحيث يتفصل منطق التطبيق عن طبقة النقل (TCP).
+<div dir="rtl">
+<ol>
+  <li>
+    <strong><a href="Networking-basics/" dir="ltr">Networking-basics/</a>:</strong>
+    دروس نظرية عن أساسيات الشبكات، من <span dir="ltr">OSI model</span> لحد <span dir="ltr">TCP</span> وإزاي بنراقبه على <span dir="ltr">Linux</span>.
+  </li>
+  <li>
+    <strong><a href="tcp-server-asio/" dir="ltr">tcp-server-asio/</a>:</strong>
+    إعادة تصميم سيرفر <a href="../0x13-asio-tcp-server/" dir="ltr">lab 0x13</a> بمعمارية
+    <strong><span dir="ltr">Hexagonal (Ports &amp; Adapters)</span></strong>،
+    بحيث يتفصل منطق التطبيق عن طبقة النقل (<span dir="ltr">TCP</span>).
+  </li>
+</ol>
+</div>
 
 ---
 
@@ -11,18 +23,69 @@
 
 الدروس مرتبة، وكل درس بيبني على اللي قبله:
 
-| # | الدرس | المحتوى |
-|---|---|---|
-| 0 | [OSI Model](Networking-basics/0_OSI-model.md) | الطبقات السبعة ودور كل طبقة. |
-| 1 | [Encapsulation في Linux](Networking-basics/1_encapsulation-linux.md) | الـ PDUs ورحلة البيانات جوه الـ kernel و`sk_buff`. |
-| 2 | [Ethernet والشبكة المحلية](Networking-basics/2_ethernet-and-local-network.md) | إجابات أسئلة الدرس السابق، وMAC، وARP، والـ Switches، والـ MTU. |
-| 3 | [IP Routing](Networking-basics/3_IP-routing.md) | إزاي Linux بيختار المسار بين الشبكات. |
-| 3.1 | [التواصل داخل الـ LAN](Networking-basics/3_1_How-Devices-Communicate-on-a-LAN.md) | إمتى الاتصال بيكون مباشر من غير Router. |
-| 4 | [Transport Layer: TCP](Networking-basics/4_transport-layer-TCP.md) | TCP والـ Ports وربطهم بـ Boost.Asio. |
-| 4.1 | [TCP Fundamentals — 4 أسئلة](Networking-basics/4_1_TCP-Fundamentals-Four-Questions.md) | أسئلة وأجوبة على أساسيات TCP مع Asio. |
-| 5 | [التحكم في سرعة الإرسال](Networking-basics/5_Controlling-TCP-Throughput-with-Cpp-and-Boost-Asio.md) | التحكم في معدل إرسال TCP من C++ وAsio. |
-| 6 | [Congestion Control](Networking-basics/6_TCP-Client-Speed-Control-and-Congestion-Control.md) | إزاي سرعة كل client بتتغير مع الوقت ومين المسؤول عنها. |
-| 7 | [أمر `ss` في Linux](Networking-basics/7_Linux-ss-Network-Socket-Debugging.md) | فحص الـ sockets واتصالات TCP. |
+<div dir="rtl">
+<table dir="rtl">
+  <thead>
+    <tr>
+      <th style="text-align: center;">#</th>
+      <th style="text-align: center;">الدرس</th>
+      <th style="text-align: center;">المحتوى</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td><a href="Networking-basics/0_OSI-model.md" dir="ltr">OSI Model</a></td>
+      <td>الطبقات السبعة ودور كل طبقة.</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td><a href="Networking-basics/1_encapsulation-linux.md" dir="ltr">Encapsulation</a> في <span dir="ltr">Linux</span></td>
+      <td>الـ <span dir="ltr">PDUs</span> ورحلة البيانات جوه الـ <span dir="ltr">kernel</span> و<code dir="ltr">sk_buff</code>.</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><a href="Networking-basics/2_ethernet-and-local-network.md" dir="ltr">Ethernet</a> والشبكة المحلية</td>
+      <td>إجابات أسئلة الدرس السابق، و<span dir="ltr">MAC</span>، و<span dir="ltr">ARP</span>، والـ <span dir="ltr">Switches</span>، والـ <span dir="ltr">MTU</span>.</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><a href="Networking-basics/3_IP-routing.md" dir="ltr">IP Routing</a></td>
+      <td>إزاي <span dir="ltr">Linux</span> بيختار المسار بين الشبكات.</td>
+    </tr>
+    <tr>
+      <td>3.1</td>
+      <td><a href="Networking-basics/3_1_How-Devices-Communicate-on-a-LAN.md">التواصل داخل الـ <span dir="ltr">LAN</span></a></td>
+      <td>إمتى الاتصال بيكون مباشر من غير <span dir="ltr">Router</span>.</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td><a href="Networking-basics/4_transport-layer-TCP.md"><span dir="ltr">Transport Layer: TCP</span></a></td>
+      <td><span dir="ltr">TCP</span> والـ <span dir="ltr">Ports</span> وربطهم بـ <span dir="ltr">Boost.Asio</span>.</td>
+    </tr>
+    <tr>
+      <td>4.1</td>
+      <td><a href="Networking-basics/4_1_TCP-Fundamentals-Four-Questions.md"><span dir="ltr">TCP Fundamentals — 4 أسئلة</span></a></td>
+      <td>أسئلة وأجوبة على أساسيات <span dir="ltr">TCP</span> مع <span dir="ltr">Asio</span>.</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td><a href="Networking-basics/5_Controlling-TCP-Throughput-with-Cpp-and-Boost-Asio.md">التحكم في سرعة الإرسال</a></td>
+      <td>التحكم في معدل إرسال <span dir="ltr">TCP</span> من <span dir="ltr">C++</span> و<span dir="ltr">Asio</span>.</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td><a href="Networking-basics/6_TCP-Client-Speed-Control-and-Congestion-Control.md" dir="ltr">Congestion Control</a></td>
+      <td>إزاي سرعة كل <span dir="ltr">client</span> بتتغير مع الوقت ومين المسؤول عنها.</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td><a href="Networking-basics/7_Linux-ss-Network-Socket-Debugging.md">أمر <code dir="ltr">ss</code> في <span dir="ltr">Linux</span></a></td>
+      <td>فحص الـ <span dir="ltr">sockets</span> واتصالات <span dir="ltr">TCP</span>.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
 الرسومات التوضيحية موجودة في [Networking-basics/imgs/](Networking-basics/imgs/).
 
@@ -34,12 +97,34 @@
 
 في lab 0x13، كلاس `Connection` كان بيقرا البيانات من الـ socket **وكمان** بيقرر يرد بإيه. هنا الدورين اتفصلوا:
 
-| المكوّن | المسؤولية |
-|---|---|
-| `TcpServer` | يقبل الاتصالات ويتابع الجلسات (يطبّق `IMessageEndpoint`). |
-| `TcpSession` | يدير socket عميل واحد، والقراءة، وطابور الكتابة (يطبّق `IReplyChannel`). |
-| `EchoHandler` | منطق التطبيق: يقرر الرد ويبعته عن طريق `IReplyChannel`، من غير ما يعرف أي حاجة عن TCP. |
-| `main.cpp` | الـ Composition Root: ينشئ المكونات ويربطها ببعض ويشغّل الـ event loop. |
+<div dir="rtl">
+<table dir="rtl">
+  <thead>
+    <tr>
+      <th style="text-align: center;">المكوّن</th>
+      <th style="text-align: center;">المسؤولية</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code dir="ltr">TcpServer</code></td>
+      <td>يقبل الاتصالات ويتابع الجلسات (يطبّق <code dir="ltr">IMessageEndpoint</code>).</td>
+    </tr>
+    <tr>
+      <td><code dir="ltr">TcpSession</code></td>
+      <td>يدير socket عميل واحد، والقراءة، وطابور الكتابة (يطبّق <code dir="ltr">IReplyChannel</code>).</td>
+    </tr>
+    <tr>
+      <td><code dir="ltr">EchoHandler</code></td>
+      <td>منطق التطبيق: يقرر الرد ويبعته عن طريق <code dir="ltr">IReplyChannel</code>، من غير ما يعرف أي حاجة عن <span dir="ltr">TCP</span>.</td>
+    </tr>
+    <tr>
+      <td><code dir="ltr">main.cpp</code></td>
+      <td>الـ <span dir="ltr">Composition Root</span>: ينشئ المكونات ويربطها ببعض ويشغّل الـ <span dir="ltr">event loop</span>.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
 ```mermaid
 flowchart LR
@@ -79,8 +164,8 @@ tcp-server-asio/
 
 ### الخصائص
 
-- **Write queue** بيضمن إن مفيش أكتر من `async_write` شغالة في نفس الوقت، وإن الرسائل بتتبعت بالترتيب.
-- **Backpressure** بثلاث حدود: 64 رسالة في الطابور، و1 MiB إجمالي بايتات، و64 KiB للرسالة الواحدة. لو العميل بطيء وعدّى أي حد منهم، الجلسة بتتقفل.
+- ال **Write queue** بيضمن إن مفيش أكتر من `async_write` شغالة في نفس الوقت، وإن الرسائل بتتبعت بالترتيب.
+- ال **Backpressure** بثلاث حدود: 64 رسالة في الطابور، و1 MiB إجمالي بايتات، و64 KiB للرسالة الواحدة. لو العميل بطيء وعدّى أي حد منهم، الجلسة بتتقفل.
 - **إدارة عمر الجلسة** بـ `shared_from_this()`، فالجلسة بتفضل عايشة طول ما فيه عملية async محتاجاها.
 - **إغلاق نظيف** مع `SIGINT` و`SIGTERM`: الـ acceptor بيتقفل، وبعده كل الجلسات النشطة.
 
@@ -105,14 +190,37 @@ nc 127.0.0.1 8080
 
 ### القيود الحالية
 
-- **مفيش Protocol Framing:** كل قراءة من `async_read_some()` بتتعامل كرسالة، لكن TCP بيوصل byte stream، فالرسالة ممكن توصل مقسومة أو ملزوقة في رسالة تانية. ده هو الـ step الجاي (`LengthPrefixFramer`).
-- **Thread واحد:** `io.run()` شغالة على thread واحد، والكود مش thread-safe لو اشتغل على thread pool.
-- **TCP بس:** `TransportType::Udp` موجود كقيمة في الـ enum، لكن مفيش `UdpServer` لسه.
+<div dir="rtl">
+<ul>
+  <li><strong>مفيش <span dir="ltr">Protocol Framing</span>:</strong> كل قراءة من <code dir="ltr">async_read_some()</code> بتتعامل كرسالة، لكن <span dir="ltr">TCP</span> بيوصل <span dir="ltr">byte stream</span>، فالرسالة ممكن توصل مقسومة أو ملزوقة في رسالة تانية. ده هو الـ <span dir="ltr">step</span> الجاي (<code dir="ltr">LengthPrefixFramer</code>).</li>
+  <li><strong><span dir="ltr">Thread</span> واحد:</strong> <code dir="ltr">io.run()</code> شغالة على <span dir="ltr">thread</span> واحد، والكود مش <span dir="ltr">thread-safe</span> لو اشتغل على <span dir="ltr">thread pool</span>.</li>
+  <li><strong><span dir="ltr">TCP</span> بس:</strong> <code dir="ltr">TransportType::Udp</code> موجود كقيمة في الـ <span dir="ltr">enum</span>، لكن مفيش <code dir="ltr">UdpServer</code> لسه.</li>
+</ul>
+</div>
 
 ### للقراءة أكتر
 
-| المستند | هتلاقي فيه |
-|---|---|
-| [ARCHITECTURE.md](tcp-server-asio/docs/ARCHITECTURE.md) | الـ UML، وتسلسل رسالة الـ echo، والملكية، والإغلاق، والمقارنة مع 0x13. |
-| [system_architecture_guide.md](tcp-server-asio/docs/system_architecture_guide.md) | شرح المعمارية السداسية وسبب تسمية كل مجلد وملف. |
-| [EXTENDING.md](tcp-server-asio/docs/EXTENDING.md) | قواعد الاعتمادية، وخطوات إضافة Handler أو UDP أو Framing، وChecklist قبل الـ commit. |
+<div dir="rtl">
+<table dir="rtl">
+  <thead>
+    <tr>
+      <th style="text-align: center;">المستند</th>
+      <th style="text-align: center;">هتلاقي فيه</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="tcp-server-asio/docs/ARCHITECTURE.md" dir="ltr">ARCHITECTURE.md</a></td>
+      <td>الـ <span dir="ltr">UML</span>، وتسلسل رسالة الـ <span dir="ltr">echo</span>، والملكية، والإغلاق، والمقارنة مع <span dir="ltr">0x13</span>.</td>
+    </tr>
+    <tr>
+      <td><a href="tcp-server-asio/docs/system_architecture_guide.md" dir="ltr">system_architecture_guide.md</a></td>
+      <td>شرح المعمارية السداسية وسبب تسمية كل مجلد وملف.</td>
+    </tr>
+    <tr>
+      <td><a href="tcp-server-asio/docs/EXTENDING.md" dir="ltr">EXTENDING.md</a></td>
+      <td>قواعد الاعتمادية، وخطوات إضافة <span dir="ltr">Handler</span> أو <span dir="ltr">UDP</span> أو <span dir="ltr">Framing</span>، و<span dir="ltr">Checklist</span> قبل الـ <span dir="ltr">commit</span>.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
