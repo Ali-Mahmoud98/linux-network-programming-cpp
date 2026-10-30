@@ -143,6 +143,7 @@ tcp-server-asio/
 │   ├── ARCHITECTURE.md                 # شرح تفصيلي بالـ UML (English)
 │   ├── system_architecture_guide.md    # شرح المعمارية والمجلدات (عربي)
 │   ├── EXTENDING.md                    # إزاي تضيف Handler أو UDP أو Framing
+│   ├── PROTOCOL_EXTENSIBILITY.md       # حدود المعمارية وخطة دعم بروتوكولات جديدة
 │   └── imgs/system_blueprint.svg
 ├── include/netserver/
 │   ├── core/        Message, PeerInfo               (مش بيعتمد على أي حاجة)
@@ -192,11 +193,34 @@ nc 127.0.0.1 8080
 
 <div dir="rtl">
 <ul>
-  <li><strong>مفيش <span dir="ltr">Protocol Framing</span>:</strong> كل قراءة من <code dir="ltr">async_read_some()</code> بتتعامل كرسالة، لكن <span dir="ltr">TCP</span> بيوصل <span dir="ltr">byte stream</span>، فالرسالة ممكن توصل مقسومة أو ملزوقة في رسالة تانية. ده هو الـ <span dir="ltr">step</span> الجاي (<code dir="ltr">LengthPrefixFramer</code>).</li>
+  <li><strong>النقل والبروتوكول متلزقين في <code dir="ltr">TcpSession</code>:</strong> أي بروتوكول جديد فوق <span dir="ltr">TCP</span> معناه تعديل في <code dir="ltr">read()</code> و<code dir="ltr">send()</code> جوه الجلسة نفسها، ومفيش طريقة تختار بيها بروتوكول مختلف لكل بورت.</li>
+  <li><strong>مفيش <span dir="ltr">Protocol Framing</span>:</strong> كل قراءة من <code dir="ltr">async_read_some()</code> بتتعامل كرسالة، لكن <span dir="ltr">TCP</span> بيوصل <span dir="ltr">byte stream</span>، فالرسالة ممكن توصل مقسومة أو ملزوقة في رسالة تانية.</li>
+  <li><strong>رسائل الترحيب جوه طبقة النقل:</strong> <code dir="ltr">TcpSession::start()</code> بيبعت نص خاص بالتطبيق، وده هيبوّظ أي بروتوكول فيه <span dir="ltr">handshake</span> أو <span dir="ltr">header</span>.</li>
+  <li><strong>مفيش <span dir="ltr">timers</span>:</strong> مفيش <span dir="ltr">idle timeout</span>، فأي عميل يتصل ومايبعتش حاجة بيفضل ماسك جلسة للأبد.</li>
+  <li><strong>التطبيق مش بيعرف دورة حياة الاتصال:</strong> مفيش <code dir="ltr">on_open</code> ولا <code dir="ltr">on_close</code>، و<code dir="ltr">IReplyChannel</code> فيه <code dir="ltr">send()</code> بس من غير <code dir="ltr">close()</code>.</li>
   <li><strong><span dir="ltr">Thread</span> واحد:</strong> <code dir="ltr">io.run()</code> شغالة على <span dir="ltr">thread</span> واحد، والكود مش <span dir="ltr">thread-safe</span> لو اشتغل على <span dir="ltr">thread pool</span>.</li>
   <li><strong><span dir="ltr">TCP</span> بس:</strong> <code dir="ltr">TransportType::Udp</code> موجود كقيمة في الـ <span dir="ltr">enum</span>، لكن مفيش <code dir="ltr">UdpServer</code> لسه.</li>
 </ul>
 </div>
+
+القائمة الكاملة (13 حد) وتفاصيل كل حد وأثره موجودة في [PROTOCOL_EXTENSIBILITY.md](tcp-server-asio/docs/PROTOCOL_EXTENSIBILITY.md#4-حدود-المعمارية-الحالية-limitations).
+
+### الخطوات الجاية
+
+الخطة دي **مخططة ولسه متنفذتش**. كل خطوة لوحدها، والسيرفر لازم يفضل شغال بعدها:
+
+<div dir="rtl">
+<ol>
+  <li>طلّع رسائل الترحيب من <code dir="ltr">TcpSession</code>.</li>
+  <li>اعمل مجلد <code dir="ltr">protocols/</code> فيه <code dir="ltr">IStreamProtocol</code> و<code dir="ltr">RawStreamProtocol</code>، و<code dir="ltr">TcpServer</code> ياخد <span dir="ltr">factory</span> للبروتوكول، من غير أي تغيير في السلوك.</li>
+  <li>ضيف <code dir="ltr">LengthPrefixProtocol</code> ومعاه <span dir="ltr">unit tests</span>.</li>
+  <li>ضيف <span dir="ltr">idle timeout</span> للجلسة.</li>
+  <li>اعمل <code dir="ltr">UdpServer</code> بـ <code dir="ltr">IDatagramProtocol</code>.</li>
+  <li>ضيف <code dir="ltr">IReplyChannel::close()</code> ونوع الرسالة (<span dir="ltr">text/binary</span>)، وبعدهم <code dir="ltr">WebSocketProtocol</code>.</li>
+</ol>
+</div>
+
+سبب الترتيب ده والبدائل اللي اتقارنت موجودين في [PROTOCOL_EXTENSIBILITY.md](tcp-server-asio/docs/PROTOCOL_EXTENSIBILITY.md#8-خطة-التنفيذ).
 
 ### للقراءة أكتر
 
@@ -220,6 +244,10 @@ nc 127.0.0.1 8080
     <tr>
       <td><a href="tcp-server-asio/docs/EXTENDING.md" dir="ltr">EXTENDING.md</a></td>
       <td>قواعد الاعتمادية، وخطوات إضافة <span dir="ltr">Handler</span> أو <span dir="ltr">UDP</span> أو <span dir="ltr">Framing</span>، و<span dir="ltr">Checklist</span> قبل الـ <span dir="ltr">commit</span>.</td>
+    </tr>
+    <tr>
+      <td><a href="tcp-server-asio/docs/PROTOCOL_EXTENSIBILITY.md" dir="ltr">PROTOCOL_EXTENSIBILITY.md</a></td>
+      <td>هل المعمارية تستحمل بروتوكولات جديدة فوق <span dir="ltr">TCP</span> و<span dir="ltr">UDP</span> زي <span dir="ltr">WebSocket</span>؟ حدود الكود الحالي، وطريقة التفكير، والحل المقترح، وخطة التنفيذ.</td>
     </tr>
   </tbody>
 </table>
